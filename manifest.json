@@ -1,0 +1,26 @@
+{
+  "name": "Save to Sinapse",
+  "author": "yukuduri",
+  "version": "1.0.0",
+  "description": "開いているウインドウ内のすべてのタブのタイトルとURLを取得します。",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "icon19.png"
+    },
+    "default_title": "Save to Sinapse",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "clipboardWrite",
+    "<all_urls>"
+  ],
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' https://unpkg.com/axios/dist/axios.min.js; object-src 'self'"
+}
