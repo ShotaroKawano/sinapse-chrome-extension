@@ -166,6 +166,9 @@ function saveToBoard() {
       })
         .then((res) => {
           console.log(res);
+          if (index === cards.length - 1) {
+            swal('保存に成功しました')
+          }
         })
         .catch(() => {});
     }
