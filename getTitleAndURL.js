@@ -48,7 +48,7 @@ async function getAllTabsInfo(tabs) {
       url_tail: "",
       is_published: true,
       // user_idを取得するためにログインしてもらう必要があるね
-      user_id: 1
+      user_id: 6
       // "tagList": [ "気候変動", "地球温暖化", "自然電力" ]
       // tagList: this.convertTaglistToTags
     },
@@ -62,6 +62,9 @@ async function getAllTabsInfo(tabs) {
   let i = 0
 
   for await (tab of tabs) {
+    if (tab.title === 'sinapse-prototype') {
+      continue;
+    }
   // tabs.forEach((tab, i) => {
     // if (i != 0) txt += delimiter;  //最初は区切り文字不要
     // console.log(tab.title + " " + tab.url);
@@ -147,31 +150,33 @@ function saveToBoard() {
     const cards = result.cards
     const boardId = result.boardId
 
-    // document.querySelector('#txt').value = txt;
-    for (let index = 1; index < cards.length; index++) {
-      const element = cards[index];
+    swal('保存に成功しました')
 
-      axios({
-        method: "POST",
-        url: "https://sinapse-20201015.herokuapp.com/api/arrows/",
-        data: {
-          from_card: cards[index] - 1,
-          from_position: 'bottom',
-          to_card: cards[index],
-          to_position: 'top',
-          arrow_type: 1,
-          label: "",
-          board_id: boardId
-        }
-      })
-        .then((res) => {
-          console.log(res);
-          if (index === cards.length - 1) {
-            swal('保存に成功しました')
-          }
-        })
-        .catch(() => {});
-    }
+    // document.querySelector('#txt').value = txt;
+    // for (let index = 1; index < cards.length; index++) {
+    //   const element = cards[index];
+
+    //   axios({
+    //     method: "POST",
+    //     url: "https://sinapse-20201015.herokuapp.com/api/arrows/",
+    //     data: {
+    //       from_card: cards[index] - 1,
+    //       from_position: 'bottom',
+    //       to_card: cards[index],
+    //       to_position: 'top',
+    //       arrow_type: 1,
+    //       label: "",
+    //       board_id: boardId
+    //     }
+    //   })
+    //     .then((res) => {
+    //       console.log(res);
+    //       if (index === cards.length - 1) {
+    //         swal('保存に成功しました')
+    //       }
+    //     })
+    //     .catch(() => {});
+    // }
 
   // const copyText = document.querySelector('#save-to-board');
   // copyText.select();
